@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("https://i.pinimg.com/736x/4b/0e/43/4b0e435e4293166eeec9ec208fe8cbe3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+}
+
+.calculator {
+    background: #484749;
+    border-radius: 10px;
+    padding: 20px;
+
+    width: 300px;
+}
+
+.display {
+    width: 92.55%;
+    height: 50px;
+    font-size: 24px;
+    text-align: right;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #969292;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 18px;
+    color: rgb(85, 81, 81);
+    border: none;
+    border-radius: 5px;
+    background-color: #a39f9f;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #c0c0c0;
+}
+
+#op :hover {
+    background-color: rgb(94, 156, 156);
+}
+
+.btn-func {
+    background-color: rgb(223, 189, 144);
+}
+
+.btn-op {
+    background-color: rgb(177, 177, 240);
+}
+
+.btn-clear {
+    background-color: rgb(238, 124, 96);
+}
+
+.btn-back {
+    background-color: rgb(238, 177, 96);
+}
+
+#btn-percent {
+    background-color: rgb(189, 223, 144);
+}
+
+.btn-equal {
+    background-color: rgb(120, 214, 120);
+}

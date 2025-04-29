@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Honk&family=Kalnia+Glaze:wght@100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Lato;
+      }
+      body {
+        width: 100%;
+        height: 100vh;
+        background-image: url("http://img.freepik.com/premium-vector/sky-clouds-design-with-flat-cartoon-poster-flyers-postcards-web-banners_771576-58.jpg");
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      body::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      .container {
+        max-width: 600px;
+        background: #0067696b;
+        border-radius: 15px;
+        padding: 20px;
+        z-index: 10;
+        box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
+      }
+      .container .title {
+        width: 100%;
+        height: 50px;
+        display: grid;
+        place-content: center;
+      }
+      .container .title h2 {
+        font-size: 23px;
+        color: white;
+        font-weight: 999;
+      }
+      .container .title h2::first-letter {
+        font-size: 26px;
+        font-weight: 999;
+      }
+      .container .city-field {
+        width: 80%;
+        margin: 5px auto;
+        color: white;
+      }
+      .container .container .input-field {
+        width: 100%;
+
+        padding: 5px 0px;
+        font-size: 16px;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        gap: 0;
+      }
+      .container .input-field input {
+        flex: 1;
+        height: 40px;
+        padding: 20px;
+        border: 2px solid wheat;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .container .input-field button {
+        background: rgb(3, 32, 32);
+        border: none;
+        outline: none;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        white-space: nowrap;
+      }
+
+      .container .info1 {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .container .info1 .card,
+      .container .info2 .card {
+        width: 170px;
+        height: 60px;
+        display: flex;
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        margin: 10px 15px;
+        border: 3px 0px;
+        border-radius: 15px;
+        background: linear-gradient(to right bottom, #4d7a91, #4d7a91, #275570);
+      }
+      .container .info2 {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 5px 7px;
+      }
+      .container .info1 .card p,
+      .container .info2 .card p {
+        font-size: 18px;
+        text-transform: capitalize;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #d9e9e9;
+        align-items: center;
+        justify-content: center;
+        display: none;
+      }
+      .overlay .loader {
+        padding: 10px 15px;
+        background: #eee;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px plum;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+      .overlay .loader span {
+        width: 15px;
+        height: 15px;
+        border-radius: 2px;
+        transition: all ease-in 0.4s;
+        background: #0e6061;
+      }
+      .overlay .loader span:nth-child(1) {
+        animation: loading linear infinite 0.4s;
+      }
+      .overlay .loader span:nth-child(2) {
+        animation: loading linear infinite 0.6s;
+      }
+      .overlay .loader span:nth-child(3) {
+        animation: loading linear infinite 0.8s;
+      }
+      .overlay .loader span:nth-child(4) {
+        animation: loading linear infinite 1s;
+      }
+      .overlay .loader span:nth-child(5) {
+        animation: loading linear infinite 1.2s;
+      }
+      .overlay .loader span:nth-child(6) {
+        animation: loading linear infinite 1.4s;
+      }
+      .overlay .loader span:nth-child(7) {
+        animation: loading linear infinite 1.6s;
+      }
+      @keyframes loading {
+        100% {
+          background: #c59494;
+        }
+      }
+    </style>
+    <title>Weather Forecast</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <h2>Weather Forecast Application</h2>
+      </div>
+      <div class="city-field">
+        <label>City Name</label>
+        <div class="input-field">
+          <input id="cityName" type="text" placeholder="Vijaywada" />
+          <button id="search">Search</button>
+        </div>
+      </div>
+      <div class="info1">
+        <div class="card">
+          <i class="fa-solid fa-cloud-showers-heavy"></i>
+          <p id="climate">Climate</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-sun"></i>
+
+          <p id="temp">Temperature</p>
+        </div>
+      </div>
+      <div class="info2">
+        <div class="card">
+          <i class="fa-solid fa-city"></i>
+          <p id="city">city Name</p>
+        </div>
+      </div>
+      <div class="info1">
+        <div class="card">
+          <i class="fa-solid fa-thumbtack"></i>
+          <p id="humid">Humidity</p>
+        </div>
+        <div class="card">
+          <i class="fa-duotone fa-solid fa-wind"></i>
+          <p id="wind">Wind Speed</p>
+        </div>
+      </div>
+    </div>
+    <div class="overlay">
+      <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <script>
+      var overlay = document.querySelector(".overlay");
+      var cityName = document.querySelector("#cityName");
+      var btn = document.querySelector("#search");
+      var climate = document.querySelector("#climate");
+      var temp = document.querySelector("#temp");
+      var city = document.querySelector("#city");
+      var humid = document.querySelector("#humid");
+      var wind = document.querySelector("#wind");
+      var container = document.querySelector(".container");
+
+      btn.addEventListener("click", () => {
+        if (cityName.value === "") {
+          alert("Enter city name");
+          return;
+        }
+        overlay.style.display = "flex";
+        container.style.display = "none";
+        setTimeout(async () => {
+          let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=5d014e4a63ab5b92cc4026f9e52f371a`;
+          const res = await fetch(apiURL);
+          const data = await res.json();
+
+          if (data) {
+            overlay.style.display = "none";
+            container.style.display = "block";
+            if (data.cod === "404") {
+              alert(data.message);
+            } else {
+              climate.innerHTML = data.weather[0].main;
+              temp.innerHTML = (data.main.temp - 273.15).toFixed(2) + "°C";
+              city.innerHTML = data.name;
+              humid.innerHTML = data.main.humidity + "%";
+              wind.innerHTML = data.wind.speed + "meter/sec";
+            }
+          }
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>
